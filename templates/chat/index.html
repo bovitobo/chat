@@ -1,0 +1,40 @@
+<!-- chat/templates/chat/index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Chat Rooms</title>
+</head>
+<body>
+    What chat room would you like to enter?<br>
+    <input id="room-name-input" type="text" size="100"><br>
+    <input id="room-name-submit" type="button" value="Enter">
+
+    <script>
+        document.querySelector('#room-name-input').focus();
+        document.querySelector('#room-name-input').onkeyup = function(e) {
+            if (e.keyCode === 13) {  // enter, return
+                document.querySelector('#room-name-submit').click();
+            }
+        };
+
+        document.querySelector('#room-name-submit').onclick = function(e) {
+            var roomName = document.querySelector('#room-name-input').value;
+            window.location.pathname = '/chat/' + roomName + '/';
+        };
+    </script>
+    <div>
+        <br><br>
+        Channels allows you to use WebSockets and other non-HTTP protocols in your Django site. <br>
+        For example you might want to use WebSockets to allow a page on your site to immediately <br>
+        receive updates from your Django server without using HTTP long-polling or other expensive techniques.<br><br>
+        In this Demo I built a simple chat server, where you can join an online room,<br>
+        post messages to the room, and have others in the same room see those messages immediately.<br><br>
+        Open a browser tab to the room page at http://127.0.0.1:8000/chat/lobby/. <br>
+        Open a second browser tab to the same room page.<br><br>
+        In the second browser tab, type the message “hello” and press enter. <br>
+        You should now see “hello” echoed in the chat log in both the second browser tab and in the first browser tab.<br><br>
+        <a href="https://channels.readthedocs.io/en/latest/tutorial/index.html" target="_blank">This demo is taken from Tutorial on Channels: </a>
+    </div>
+</body>
+</html>
